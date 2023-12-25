@@ -53,6 +53,10 @@
       "relation": "manyToMany",
       "target": "api::size.size",
       "mappedBy": "products"
+    },
+    "bestseller": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

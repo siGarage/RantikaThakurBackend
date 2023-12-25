@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "carts",
+  "collectionName": "wishlists",
   "info": {
-    "singularName": "cart",
-    "pluralName": "carts",
-    "displayName": "Cart",
+    "singularName": "wishlist",
+    "pluralName": "wishlists",
+    "displayName": "Wishlist",
     "description": ""
   },
   "options": {
@@ -14,33 +14,29 @@
   "attributes": {
     "email": {
       "type": "email",
-      "required": true,
-      "unique": false
+      "required": true
     },
     "title": {
       "type": "string",
-      "required": true,
-      "unique": false
+      "required": true
     },
     "price": {
       "type": "biginteger",
       "required": true
     },
-    "id_product": {
-      "type": "biginteger"
-    },
     "category": {
-      "type": "string",
+      "type": "string"
+    },
+    "id_product": {
+      "type": "biginteger",
       "required": true
     },
     "image": {
-      "type": "string"
-    },
-    "quantity": {
-      "type": "integer"
+      "type": "string",
+      "required": true
     },
     "size": {
-      "type": "string"
+      "type": "json"
     }
   }
 }

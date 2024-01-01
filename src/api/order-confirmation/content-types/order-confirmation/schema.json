@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_confirmations",
+  "info": {
+    "singularName": "order-confirmation",
+    "pluralName": "order-confirmations",
+    "displayName": "OrderConfirmation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Order_Status": {
+      "type": "string"
+    },
+    "confirm_orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::confirm-order.confirm-order",
+      "mappedBy": "order_confirmation"
+    }
+  }
+}

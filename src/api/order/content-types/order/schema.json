@@ -17,9 +17,6 @@
     },
     "stripeId": {
       "type": "text"
-    },
-    "products": {
-      "type": "json"
     }
   }
 }

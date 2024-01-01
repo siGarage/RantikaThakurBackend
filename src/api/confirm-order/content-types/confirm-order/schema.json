@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "confirm_orders",
+  "info": {
+    "singularName": "confirm-order",
+    "pluralName": "confirm-orders",
+    "displayName": "ConfirmOrder",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "address": {
+      "type": "json"
+    },
+    "products": {
+      "type": "json"
+    },
+    "TrackId": {
+      "type": "string"
+    },
+    "order_confirmation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order-confirmation.order-confirmation",
+      "inversedBy": "confirm_orders"
+    },
+    "DeliveryService": {
+      "type": "string"
+    },
+    "stripeId": {
+      "type": "string"
+    }
+  }
+}

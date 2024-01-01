@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_sizes",
+  "info": {
+    "singularName": "custom-size",
+    "pluralName": "custom-sizes",
+    "displayName": "Custom-Size",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "upperbust": {
+      "type": "string"
+    },
+    "bust": {
+      "type": "string"
+    },
+    "highwaist": {
+      "type": "string"
+    },
+    "waist": {
+      "type": "string"
+    },
+    "hip": {
+      "type": "string"
+    },
+    "shoulder": {
+      "type": "string"
+    },
+    "armhole": {
+      "type": "string"
+    },
+    "sleevelength": {
+      "type": "string"
+    },
+    "bicep": {
+      "type": "string"
+    },
+    "fullLength": {
+      "type": "string"
+    },
+    "pantskirtLength": {
+      "type": "string"
+    }
+  }
+}

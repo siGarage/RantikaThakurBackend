@@ -744,6 +744,125 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiConfirmOrderConfirmOrder extends Schema.CollectionType {
+  collectionName: 'confirm_orders';
+  info: {
+    singularName: 'confirm-order';
+    pluralName: 'confirm-orders';
+    displayName: 'ConfirmOrder';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email;
+    address: Attribute.JSON;
+    products: Attribute.JSON;
+    TrackId: Attribute.String;
+    order_confirmation: Attribute.Relation<
+      'api::confirm-order.confirm-order',
+      'manyToOne',
+      'api::order-confirmation.order-confirmation'
+    >;
+    DeliveryService: Attribute.String;
+    stripeId: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::confirm-order.confirm-order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::confirm-order.confirm-order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Schema.CollectionType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    email: Attribute.Email;
+    message: Attribute.RichText;
+    phone: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCustomSizeCustomSize extends Schema.CollectionType {
+  collectionName: 'custom_sizes';
+  info: {
+    singularName: 'custom-size';
+    pluralName: 'custom-sizes';
+    displayName: 'Custom-Size';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    phone: Attribute.String;
+    email: Attribute.Email;
+    upperbust: Attribute.String;
+    bust: Attribute.String;
+    highwaist: Attribute.String;
+    waist: Attribute.String;
+    hip: Attribute.String;
+    shoulder: Attribute.String;
+    armhole: Attribute.String;
+    sleevelength: Attribute.String;
+    bicep: Attribute.String;
+    fullLength: Attribute.String;
+    pantskirtLength: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::custom-size.custom-size',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::custom-size.custom-size',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -758,7 +877,6 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   attributes: {
     email: Attribute.Email;
     stripeId: Attribute.Text;
-    products: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -770,6 +888,43 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderConfirmationOrderConfirmation
+  extends Schema.CollectionType {
+  collectionName: 'order_confirmations';
+  info: {
+    singularName: 'order-confirmation';
+    pluralName: 'order-confirmations';
+    displayName: 'OrderConfirmation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Order_Status: Attribute.String;
+    confirm_orders: Attribute.Relation<
+      'api::order-confirmation.order-confirmation',
+      'oneToMany',
+      'api::confirm-order.confirm-order'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order-confirmation.order-confirmation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order-confirmation.order-confirmation',
       'oneToOne',
       'admin::user'
     > &
@@ -940,7 +1095,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::cart.cart': ApiCartCart;
       'api::category.category': ApiCategoryCategory;
+      'api::confirm-order.confirm-order': ApiConfirmOrderConfirmOrder;
+      'api::contact.contact': ApiContactContact;
+      'api::custom-size.custom-size': ApiCustomSizeCustomSize;
       'api::order.order': ApiOrderOrder;
+      'api::order-confirmation.order-confirmation': ApiOrderConfirmationOrderConfirmation;
       'api::product.product': ApiProductProduct;
       'api::rating.rating': ApiRatingRating;
       'api::size.size': ApiSizeSize;

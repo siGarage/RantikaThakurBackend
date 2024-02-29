@@ -869,15 +869,13 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   info: {
     singularName: 'order';
     pluralName: 'orders';
-    displayName: 'Order';
-    description: '';
+    displayName: 'order';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    stripeId: Attribute.Text;
-    products: Attribute.JSON;
+    orderId: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -926,6 +924,36 @@ export interface ApiOrderConfirmationOrderConfirmation
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::order-confirmation.order-confirmation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPaymentPayment extends Schema.CollectionType {
+  collectionName: 'payments';
+  info: {
+    singularName: 'payment';
+    pluralName: 'payments';
+    displayName: 'Payment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    All: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::payment.payment',
       'oneToOne',
       'admin::user'
     > &
@@ -1101,6 +1129,7 @@ declare module '@strapi/types' {
       'api::custom-size.custom-size': ApiCustomSizeCustomSize;
       'api::order.order': ApiOrderOrder;
       'api::order-confirmation.order-confirmation': ApiOrderConfirmationOrderConfirmation;
+      'api::payment.payment': ApiPaymentPayment;
       'api::product.product': ApiProductProduct;
       'api::rating.rating': ApiRatingRating;
       'api::size.size': ApiSizeSize;

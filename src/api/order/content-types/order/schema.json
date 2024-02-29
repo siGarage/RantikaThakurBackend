@@ -4,19 +4,15 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order",
-    "description": ""
+    "displayName": "order"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "stripeId": {
-      "type": "text"
-    },
-    "products": {
-      "type": "json"
+    "orderId": {
+      "type": "string"
     }
   }
 }
